@@ -17,7 +17,12 @@
     },
     "autoload": {
         "psr-4": {
-            "corbomite\\": "src/"
+            "corbomite\\cli\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "corbomite\\tests\\": "tests/"
         }
     },
     "config": {
