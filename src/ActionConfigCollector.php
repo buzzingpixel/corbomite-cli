@@ -4,10 +4,20 @@ declare(strict_types=1);
 namespace corbomite\cli;
 
 use LogicException;
-use Composer\Console\Application;
+use Composer\Package\PackageInterface;
 
 class ActionConfigCollector
 {
+    private $composerPackages;
+
+    /**
+     * @param PackageInterface[] $composerPackages
+     */
+    public function __construct(array $composerPackages)
+    {
+        $this->composerPackages = $composerPackages;
+    }
+
     public function __invoke(): array
     {
         if (! defined('APP_BASE_PATH')) {
@@ -37,15 +47,7 @@ class ActionConfigCollector
             }
         }
 
-        $composerApp = new Application();
-
-        /** @noinspection PhpUnhandledExceptionInspection */
-        $composer = $composerApp->getComposer();
-        $repositoryManager = $composer->getRepositoryManager();
-        $installedFilesystemRepository = $repositoryManager->getLocalRepository();
-        $packages = $installedFilesystemRepository->getCanonicalPackages();
-
-        foreach ($packages as $package) {
+        foreach ($this->composerPackages as $package) {
             $extra = $package->getExtra();
 
             $configFilePath = APP_BASE_PATH .
