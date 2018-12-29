@@ -8,7 +8,8 @@
         "ext-json": "*",
         "nunomaduro/collision": "^2.1",
         "composer/composer": "^1.8",
-        "buzzingpixel/corbomite-di": "^1.0"
+        "buzzingpixel/corbomite-di": "^1.0",
+        "symfony/console": "^4.2"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",

@@ -8,6 +8,7 @@ use corbomite\cli\PHPInternalCalls;
 use corbomite\cli\ActionConfigCollector;
 use corbomite\cli\actions\ListActionsAction;
 use NunoMaduro\Collision\Provider as Collision;
+use Symfony\Component\Console\Output\ConsoleOutput;
 
 return [
     ActionConfigCollector::class => function () {
@@ -28,6 +29,9 @@ return [
         return new PHPInternalCalls();
     },
     ListActionsAction::class => function () {
-        return new ListActionsAction();
+        return new ListActionsAction(
+            new ConsoleOutput(),
+            Di::get(ActionConfigCollector::class)()
+        );
     },
 ];

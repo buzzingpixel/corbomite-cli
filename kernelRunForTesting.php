@@ -5,6 +5,7 @@ use corbomite\di\Di;
 use corbomite\cli\Kernel;
 
 define('APP_BASE_PATH', __DIR__);
+define('ENTRY_POINT', 'asdf');
 
 require_once 'vendor/autoload.php';
 
