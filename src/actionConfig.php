@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-use corbomite\cli\ListActionsAction;
+use corbomite\cli\actions\ListActionsAction;
 
 return [
     'cli' => [
