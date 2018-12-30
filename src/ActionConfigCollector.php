@@ -37,12 +37,12 @@ class ActionConfigCollector
 
         if (file_exists($appJsonPath)) {
             $appJson = json_decode(file_get_contents($appJsonPath), true);
-            $configFilePath = $appJson['extra']['cliActionConfigFilePath'] ?? null;
+            $configFilePath = APP_BASE_PATH .
+                '/' .
+                $appJson['extra']['cliActionConfigFilePath'] ?? 'asdf';
 
-            if ($configFilePath &&
-                file_exists($configFilePath)
-            ) {
-                $configInclude = include APP_BASE_PATH . '/' . $configFilePath;
+            if (file_exists($configFilePath)) {
+                $configInclude = include $configFilePath;
                 $actionConfig = \is_array($configInclude) ? $configInclude : [];
             }
         }
