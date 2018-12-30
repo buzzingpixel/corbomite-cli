@@ -23,7 +23,7 @@ class ListActionsAction
         defined('ENTRY_POINT') || define('ENTRY_POINT', 'app');
 
         $this->consoleOutput->writeln(
-            '<fg=green>BuzzingPixel Command Line</>' . PHP_EOL
+            '<fg=green>Corbomite Command Line</>' . PHP_EOL
         );
 
         $this->consoleOutput->writeln(
