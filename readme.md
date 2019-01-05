@@ -25,11 +25,11 @@ Di::get(CliKernel::class)($argv);
 
 ## Actions (Commands)
 
-Your app or composer package can provide actions to run on the command line. To do so, set a `cliActionConfigFilePath` key in the `extra` object of your compose.json:
+Your app or composer package can provide actions to run on the command line. To do so, set a `cliActionConfigFilePath` key in the `extra` object of your composer.json:
 
 ```json
 {
-    "name": "vendro/name",
+    "name": "vendor/name",
     "extra": {
         "cliActionConfigFilePath": "src/actionConfig.php"
     }
@@ -98,8 +98,9 @@ class CreateMigrationAction
 
     public function __invoke(CliArgumentsModel $argModel)
     {
+        // Optionally check for argument on the command line before asking
         if (! $val = $argModel->getArgumentByIndex(2)) {
-            $name = $this->cliQuestionService->ask(
+            $val = $this->cliQuestionService->ask(
                 '<fg=cyan>Ask some question: </>'
             );
         }
