@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace corbomite\cli;
 
 use corbomite\di\Di;
+use corbomite\configcollector\Collector;
 use corbomite\cli\models\CliArgumentsModel;
 use NunoMaduro\Collision\Provider as Collision;
 use corbomite\cli\exceptions\ActionNotFoundException;
@@ -52,12 +53,9 @@ class Kernel
             throw new InvalidActionArgumentException('Invalid action');
         }
 
-        /** @var ActionConfigCollector $actionCollector */
-        $actionCollector = $this->di->getFromDefinition(
-            ActionConfigCollector::class
-        );
+        $collector = $this->di->getFromDefinition(Collector::class);
 
-        $actions = $actionCollector();
+        $actions = $collector('cliActionConfigFilePath');
 
         $action = $actions[$action[0]]['commands'][$action[1]] ?? null;
 
