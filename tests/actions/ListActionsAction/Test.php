@@ -50,7 +50,7 @@ class Test extends TestCase
                 '<fg=green>  cli/list-actions  </>Lists available actions',
                 '',
             ],
-            $self->writeLineCalls
+            $this->writeLineCalls
         );
     }
 }
