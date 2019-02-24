@@ -24,6 +24,8 @@ class CliArgumentsModel
     public function setRawArguments(array $rawArguments): self
     {
         $this->rawArguments = $rawArguments = array_values($rawArguments);
+        $this->parsedArguments = [];
+        $this->parsedArgumentsByIndex = [];
 
         $index = 0;
 
