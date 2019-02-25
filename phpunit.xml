@@ -21,6 +21,7 @@
             <exclude>
                 <file>src/actionConfig.php</file>
                 <file>src/diConfig.php</file>
+                <file>src/ExitStatement.php</file>
             </exclude>
         </whitelist>
     </filter>

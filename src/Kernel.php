@@ -20,11 +20,16 @@ class Kernel
 {
     private $di;
     private $collision;
+    private $existStatement;
 
-    public function __construct(Di $di, Collision $collision)
-    {
+    public function __construct(
+        Di $di,
+        Collision $collision,
+        ExitStatement $existStatement
+    ) {
         $this->di = $di;
         $this->collision = $collision;
+        $this->existStatement = $existStatement;
     }
 
     /**
@@ -77,13 +82,15 @@ class Kernel
         /** @noinspection PhpUnhandledExceptionInspection */
         if ($this->di->hasDefinition($actionClass)) {
             /** @noinspection PhpUnhandledExceptionInspection */
-            $class = Di::get($actionClass);
+            $class = $this->di->makeFromDefinition($actionClass);
         }
 
         if (! $class) {
             $class = new $actionClass;
         }
 
-        exit($class->{$actionMethod}(new CliArgumentsModel($arguments)));
+        $this->existStatement->exitWith(
+            $class->{$actionMethod}(new CliArgumentsModel($arguments))
+        );
     }
 }

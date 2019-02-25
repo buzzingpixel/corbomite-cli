@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 use corbomite\di\Di;
 use corbomite\cli\Kernel;
+use corbomite\cli\ExitStatement;
 use corbomite\cli\PHPInternalCalls;
 use corbomite\configcollector\Collector;
 use corbomite\cli\actions\ListActionsAction;
@@ -21,7 +22,7 @@ use Symfony\Component\Console\Application as ConsoleApplication;
 
 return [
     Kernel::class => function () {
-        return new Kernel(new Di, new Collision());
+        return new Kernel(new Di, new Collision(), new ExitStatement());
     },
     PHPInternalCalls::class => function () {
         return new PHPInternalCalls();
