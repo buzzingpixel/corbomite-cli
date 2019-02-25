@@ -1,5 +1,7 @@
 # Corbomite CLI
 
+<p><a href="https://travis-ci.org/buzzingpixel/corbomite-cli"><img src="https://api.travis-ci.org/buzzingpixel/corbomite-cli.svg?branch=master"></a></p>
+
 Part of BuzzingPixel's Corbomite project.
 
 Provides a light framework for registering and running commands on the PHP CLI.
